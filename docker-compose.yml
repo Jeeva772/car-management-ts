@@ -1,6 +1,6 @@
 version: "3"
 services:
-       login-app:
+       car-app:
            container_name: node-typscript
            image: node-typscript
            restart: always

@@ -4,6 +4,9 @@ interface ICar {
   brand: string;
   color: string;
   model: string;
+  name: string;
+  year: string;
+  countryCode?: string;
 }
 
 // interface CarModelInterface extends mongoose.Model<CarDoc> {
@@ -27,6 +30,17 @@ const carSchema = new Schema<ICar>({
   model: {
     type: String,
     required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  year: {
+    type: String,
+    required: true,
+  },
+  countryCode: {
+    type: String
   },
 });
 
