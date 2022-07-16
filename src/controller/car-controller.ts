@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from "express";
 import { Car } from "../models/car";
 
 export class CarController {
-    
   async authenticate(req: Request, res: Response, next: NextFunction) {
     try {
       const apiKey = req.get("x-api-key");
@@ -27,8 +26,12 @@ export class CarController {
 
   async getCarById(req: Request, res: Response) {
     try {
-      const car = await Car.findById(req.params.id);
-      return res.status(200).json(car);
+      try {
+        const car = await Car.findById(req.params.id);
+        return res.status(200).json(car);
+      } catch (e: any) {
+        return res.status(404).json({ msg: "Car not found" });
+      }
     } catch (e: any) {
       res.status(500).send(e);
     }
@@ -49,9 +52,12 @@ export class CarController {
     try {
       const id = req.params.id;
       const carUpdate = req.body;
-      await Car.findByIdAndUpdate(id, { $set: carUpdate });
-      const updatedCar = await Car.findById(id);
-      return res.status(200).json(updatedCar);
+      try {
+        await Car.findByIdAndUpdate(id, { $set: carUpdate });
+        return res.status(200).json(carUpdate);
+      } catch (e: any) {
+        return res.status(404).json({ msg: "Car not found" });
+      }
     } catch (e: any) {
       res.status(500).send(e);
     }
@@ -59,8 +65,12 @@ export class CarController {
 
   async deleteCarById(req: Request, res: Response) {
     try {
-      const deleteResult = await Car.findByIdAndRemove(req.params.id);
-      return res.status(200).json(deleteResult);
+      try {
+        const deleteResult = await Car.findByIdAndRemove(req.params.id);
+        return res.status(200).json(deleteResult);
+      } catch (e: any) {
+        return res.status(404).json({ msg: "Car not found" });
+      }
     } catch (e: any) {
       res.status(500).send(e);
     }
