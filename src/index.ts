@@ -5,7 +5,7 @@ import cors from "cors";
 import morgan from "morgan";
 import  helmet from "helmet";
 import swaggerUi from "swagger-ui-express";
-import swaggerDocument  from "./swagger.json";
+import swaggerDocument  from "../swagger_output.json";
 import { CarRouter } from "./routes/car";
 
 // defining the Express app
@@ -27,7 +27,9 @@ app.use(morgan('combined'));
 app.use(CarRouter);
 
 // Connecting to Mongo DB
-mongoose.connect('mongodb://mongo:27017/cardb', {useNewUrlParser: true} as ConnectOptions);
+//mongodb://docker:mongopw@localhost:49154
+//mongodb://mongo:27017/cardb
+mongoose.connect('mongodb://docker:mongopw@localhost:49154', {useNewUrlParser: true} as ConnectOptions);
 const conn = mongoose.connection;
 conn.on('connected', () => {
     console.log('database is connected successfully');

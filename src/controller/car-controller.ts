@@ -17,8 +17,11 @@ export class CarController {
 
   async getCar(req: Request, res: Response) {
     try {
-      const car = await Car.find({});
-      res.status(200).send(car);
+      const cars = await Car.find({});
+      const metaData = cars.map((car) => {
+        return {"id": car.id, "brand" : car.brand, "color": car.color, "model": car.model}
+      });
+      res.status(200).send(metaData);
     } catch (e: any) {
       res.status(500).send(e);
     }
