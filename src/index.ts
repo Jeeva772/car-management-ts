@@ -4,8 +4,6 @@ import { json } from "body-parser";
 import cors from "cors";
 import morgan from "morgan";
 import  helmet from "helmet";
-import swaggerUi from "swagger-ui-express";
-import swaggerDocument  from "../swagger_output.json";
 import { CarRouter } from "./routes/car";
 
 // defining the Express app
@@ -38,9 +36,6 @@ conn.on('disconnected',() =>{
     console.log('database is disconnected successfully');
 })
 conn.on('error', console.error.bind(console, 'connection error:'));
-
-//swagger documentation about api
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // starting the server
 app.listen(3000, () => {

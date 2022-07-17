@@ -1,3 +1,18 @@
+#API
+
+Get all car meta-data
+    > get http://localhost:3000/car
+Get Car by Id
+    > get/:id http://localhost:3000/car/<id>
+Create Car
+    > post http://localhost:3000/car
+Update car data
+    > put http://localhost:3000/car/<id>
+Delete car by Id
+    > delete http://localhost:3000/car/<id>
+Delete all car
+    > delete http://localhost:3000/car
+
 Steps for docker setup:
 
 1. Bild and creating the docker image
