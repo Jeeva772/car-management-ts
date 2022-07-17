@@ -25,9 +25,9 @@ app.use(morgan('combined'));
 app.use(CarRouter);
 
 // Connecting to Mongo DB
-//mongodb://docker:mongopw@localhost:49154
-//mongodb://mongo:27017/cardb
-mongoose.connect('mongodb://docker:mongopw@localhost:49154', {useNewUrlParser: true} as ConnectOptions);
+//Mongo standalone instance - mongodb://docker:mongopw@localhost:49154
+//Mongo docker compose instance - mongodb://mongo:27017/cardb
+mongoose.connect('mongodb://mongo:27017/cardb', {useNewUrlParser: true} as ConnectOptions);
 const conn = mongoose.connection;
 conn.on('connected', () => {
     console.log('database is connected successfully');
