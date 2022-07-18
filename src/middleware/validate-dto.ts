@@ -1,6 +1,11 @@
 import { ValidateFunction } from "ajv";
 import { Request, Response, NextFunction } from "express";
 
+/**
+ * validate json schema
+ * @param ajvValidate 
+ * @returns 
+ */
 function validateDto(ajvValidate: ValidateFunction<{ [x: string]: {} }>) {
   return (req: Request, res: Response, next: NextFunction) => {
     const valid = ajvValidate(req.body);

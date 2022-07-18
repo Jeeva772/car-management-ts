@@ -2,6 +2,12 @@ import { NextFunction, Request, Response } from "express";
 import { Car } from "../models/car";
 
 export class CarController {
+  /**
+   * authenticate authenticate api wit x-api-key
+   * @param req Request
+   * @param res Response
+   * @param next NextFunction
+   */
   async authenticate(req: Request, res: Response, next: NextFunction) {
     try {
       const apiKey = req.get("x-api-key");
@@ -15,6 +21,11 @@ export class CarController {
     }
   }
 
+  /**
+   * Get all car meta-data
+   * @param req Request
+   * @param res Response
+   */
   async getCar(req: Request, res: Response) {
     try {
       const cars = await Car.find({});
@@ -27,6 +38,12 @@ export class CarController {
     }
   }
 
+  /**
+   * get car by Id
+   * @param req Request
+   * @param res Response
+   * @returns res Response
+   */
   async getCarById(req: Request, res: Response) {
     try {
       try {
@@ -40,6 +57,12 @@ export class CarController {
     }
   }
 
+  /**
+   * create car in the system
+   * @param req Reuest
+   * @param res Response
+   * @returns Response
+   */
   async createCar(req: Request, res: Response) {
     try {
       //const { brand, color, model, name } = req.body;
@@ -51,6 +74,12 @@ export class CarController {
     }
   }
 
+  /**
+   * update a car data by Id
+   * @param req Request
+   * @param res Response
+   * @returns 
+   */
   async updateCarById(req: Request, res: Response) {
     try {
       const id = req.params.id;
@@ -66,6 +95,12 @@ export class CarController {
     }
   }
 
+  /**
+   * Delete car by Id
+   * @param req Request
+   * @param res Response
+   * @returns 
+   */
   async deleteCarById(req: Request, res: Response) {
     try {
       try {
@@ -79,6 +114,12 @@ export class CarController {
     }
   }
 
+  /**
+   * Delete all car
+   * @param req Request
+   * @param res Response
+   * @returns 
+   */
   async deleteAllCar(req: Request, res: Response) {
     try {
       const deleteResult = await Car.remove();

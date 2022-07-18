@@ -30,6 +30,6 @@ const schema = {
     required: ["brand", "color", "model", "name", "year"],
     additionalProperties: false
   };
-  // validate is a type guard for MyData - type is inferred from schema type
+  // validate is a type guard  - type is inferred from schema type
  const carValidschema =  ajvInstance.compile(schema);
  export {carValidschema}

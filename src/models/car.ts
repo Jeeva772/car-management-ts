@@ -1,5 +1,8 @@
 import mongoose, { model, Schema } from "mongoose";
 
+/**
+ * Interface for car
+ */
 interface ICar {
   brand: string;
   color: string;
@@ -9,15 +12,9 @@ interface ICar {
   countryCode?: string;
 }
 
-// interface CarModelInterface extends mongoose.Model<CarDoc> {
-//   build(attr: ICar): CarDoc;
-// }
-
-// interface CarDoc extends mongoose.Document {
-//   brand: string;
-//   color: string;
-//   model: string;
-// }
+/**
+ * Car schema
+ */
 const carSchema = new Schema<ICar>({
   brand: {
     type: String,
@@ -43,10 +40,6 @@ const carSchema = new Schema<ICar>({
     type: String
   },
 });
-
-// carSchema.statics.build = (attr: ICar) => {
-//     return new Car(attr)
-//   }
 
 const Car = model<ICar>("Car", carSchema);
 

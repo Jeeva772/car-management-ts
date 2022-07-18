@@ -21,12 +21,12 @@ app.use(cors());
 // adding morgan to log HTTP requests
 app.use(morgan('combined'));
 
-//adding express router
+// adding express router
 app.use(CarRouter);
 
 // Connecting to Mongo DB
-//Mongo standalone instance - mongodb://docker:mongopw@localhost:49154
-//Mongo docker compose instance - mongodb://mongo:27017/cardb
+// Mongo standalone instance - mongodb://docker:mongopw@localhost:49154
+// Mongo docker compose instance - mongodb://mongo:27017/cardb
 mongoose.connect('mongodb://mongo:27017/cardb', {useNewUrlParser: true} as ConnectOptions);
 const conn = mongoose.connection;
 conn.on('connected', () => {
