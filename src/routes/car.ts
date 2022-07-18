@@ -16,7 +16,7 @@ router.all("*", carController.authenticate);
 /**
  * get car
  */
-router.get("/car", carController.getCar);
+router.get("/car", carController.getCars);
 
 /**
  * get car by Id

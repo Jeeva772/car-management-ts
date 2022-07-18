@@ -26,7 +26,7 @@ export class CarController {
    * @param req Request
    * @param res Response
    */
-  async getCar(req: Request, res: Response) {
+  async getCars(req: Request, res: Response) {
     try {
       const cars = await Car.find({});
       const metaData = cars.map((car) => {
@@ -86,7 +86,7 @@ export class CarController {
       const carUpdate = req.body;
       try {
         await Car.findByIdAndUpdate(id, { $set: carUpdate });
-        return res.status(200).json(carUpdate);
+        return res.status(204).json(carUpdate);
       } catch (e: any) {
         return res.status(404).json({ msg: "Car not found" });
       }
