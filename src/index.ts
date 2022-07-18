@@ -27,7 +27,7 @@ app.use(CarRouter);
 // Connecting to Mongo DB
 // Mongo standalone instance - mongodb://docker:mongopw@localhost:49154
 // Mongo docker compose instance - mongodb://mongo:27017/cardb
-mongoose.connect('mongodb://mongo:27017/cardb', {useNewUrlParser: true} as ConnectOptions);
+mongoose.connect('mongodb://docker:mongopw@localhost:49154', {useNewUrlParser: true} as ConnectOptions);
 const conn = mongoose.connection;
 conn.on('connected', () => {
     console.log('database is connected successfully');
@@ -41,3 +41,5 @@ conn.on('error', console.error.bind(console, 'connection error:'));
 app.listen(3000, () => {
   console.log("Server is listening on port 3000");
 });
+
+export default app;

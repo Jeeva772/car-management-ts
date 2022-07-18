@@ -32,9 +32,9 @@ export class CarController {
       const metaData = cars.map((car) => {
         return {"id": car.id, "brand" : car.brand, "color": car.color, "model": car.model}
       });
-      res.status(200).send(metaData);
+      return res.status(200).send(metaData);
     } catch (e: any) {
-      res.status(500).send(e);
+      return res.status(500).send(e);
     }
   }
 
